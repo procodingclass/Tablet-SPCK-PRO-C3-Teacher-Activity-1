@@ -3,7 +3,7 @@ var ground, groundImage;
 
 function preload() {
   trexRunning = loadAnimation("trex1.png", "trex2.png", "trex3.png");
-  groundImage = loadImage("ground2.png");
+  groundImage = loadImage("ground1.png");
 }
 function setup() {
   createCanvas(600, 200);
