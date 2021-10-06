@@ -1,31 +1,38 @@
 var trex, trexRunning;
-var ground, groundImage;
+var ground
 
 function preload() {
   trexRunning = loadAnimation("trex1.png", "trex2.png", "trex3.png");
-  groundImage = loadImage("ground1.png");
+  
 }
+
 function setup() {
   createCanvas(600, 200);
 
   //create a trex sprite
-  trex = createSprite(50, 160, 20, 50);
+  trex = createSprite(50, 180, 20, 50);
   trex.addAnimation("running", trexRunning);
+
+  //adding scale and position to trex
   trex.scale = 0.5;
   trex.x = 50;
 
-  //create a ground sprite
+  //create ground sprite
+  ground = createSprite(200, 180, 400, 20);
+  
 }
+
 function draw() {
   background(220);
 
-  //jump when the space button is pressed
+   //jumping the trex on space key press
   if (keyDown("space")) {
     trex.velocityY = -12;
   }
 
-  // Adding gravity
   trex.velocityY = trex.velocityY + 0.8;
 
+  //stop trex from falling down
+  trex.collide(ground);
   drawSprites();
 }
